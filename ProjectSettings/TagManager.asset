@@ -13,9 +13,9 @@ TagManager:
   - UI
   - RunTime
   - Enemy
-  - 
-  - 
-  - 
+  - MiniMap
+  - Wall
+  - MiniEnemy
   - 
   - 
   - 

@@ -2008,6 +2008,7 @@ MonoBehaviour:
   runSpeed: 8
   SuperSpeed: 10
   rotateDuration: 0.2
+  InitPosition: {x: 0, y: 0, z: 0}
 --- !u!136 &6236818152064747373
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2065,6 +2066,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectionAmount: 0
+  allCollectionAmount: 0
+  collectionText: {fileID: 0}
 --- !u!114 &2806852433068398754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2273,7 +2276,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
