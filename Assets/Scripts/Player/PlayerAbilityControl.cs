@@ -55,12 +55,14 @@ public class PlayerAbilityControl : MonoBehaviour
         AttackAbility.enabled = true;
         navMeshObstacle.enabled = true;
         playerMove.currentSpeed = playerMove.SuperSpeed;
+        MiniMap.instance.ShowEnemyIcon(1);
         hand.GetComponent<SkinnedMeshRenderer>().material = material;
 
     }
 
     void RecoverToHuman()
     {
+        MiniMap.instance.HideEnemyIcon();
         PowerUpState = false;
         AttackAbility.enabled = false;
         navMeshObstacle.enabled = false;

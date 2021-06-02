@@ -4919,6 +4919,7 @@ GameObject:
   - component: {fileID: 537885964}
   - component: {fileID: 537885966}
   - component: {fileID: 537885965}
+  - component: {fileID: 537885967}
   m_Layer: 6
   m_Name: MiniMapCamera
   m_TagString: Untagged
@@ -4991,6 +4992,22 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &537885967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537885963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b76f3ef67f1fe0d41ae62c2cafa05723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  miniIconEnemy: []
+  NoMiniMapLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &541248387 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1edcb084bc781e445bf5706c2c434ab8, type: 3}
@@ -19051,7 +19068,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6236818152894201278, guid: b532804793680014dace3af41297a0ec, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 4294966015
+      value: 4294963967
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b532804793680014dace3af41297a0ec, type: 3}
