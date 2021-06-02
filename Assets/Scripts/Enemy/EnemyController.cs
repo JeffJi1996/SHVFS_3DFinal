@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 
-public enum EnemyStates { SLEEP, CHASE, PATOL, ESCAPE, DEAD }
+public enum EnemyStates { CHASE, PATOL, ESCAPE, DEAD }
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyController : MonoBehaviour
@@ -27,7 +27,7 @@ public class EnemyController : MonoBehaviour
     public float attackRange;
     public GameObject player;
     private Transform playerTrans;
-    public Transform firstEscapePoint;
+
     [SerializeField]
     private Vector3 escapePosition;
     private Vector3 dirToPlayer;
@@ -55,10 +55,10 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
-        enemyStates = EnemyStates.SLEEP;
         //GetNewWayPoint();
     }
 
+    
     private void Update()
     {
         isChase = !player.GetComponent<PlayerAbilityControl>().PowerUpState;
@@ -77,9 +77,6 @@ public class EnemyController : MonoBehaviour
 
         switch (enemyStates)
         {
-            case EnemyStates.SLEEP:
-                gameObject.SetActive(false);
-                break;
             case EnemyStates.CHASE:
                 agent.destination = playerTrans.position;
                 firstRun = true;
@@ -120,8 +117,7 @@ public class EnemyController : MonoBehaviour
                     GetNewWayPoint();
                 }
                 break;
-            case EnemyStates.DEAD:
-                break;
+
         }
     }
 
@@ -206,9 +202,11 @@ public class EnemyController : MonoBehaviour
 
     void OnTriggerEnter(Collider coll)
     {
-        if (coll.GetComponent<PlayerAbilityControl>() != null && PlayerAbilityControl.instance.PowerUpState== false)
+        if (coll.GetComponent<PlayerAbilityControl>() != null && PlayerAbilityControl.instance.PowerUpState == false)
         {
             player.transform.position = player.GetComponent<PlayerMovement>().InitPosition;
         }
     }
+    
+    
 }
