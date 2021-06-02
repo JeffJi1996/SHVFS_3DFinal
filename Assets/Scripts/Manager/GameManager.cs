@@ -8,11 +8,7 @@ public class GameManager : Singleton<GameManager>
 
     List<IEndGameObserver> endGameObservers = new List<IEndGameObserver>();
     // Start is called before the first frame update
-    private void Start()
-    {
-        throw new NotImplementedException();
-    }
-    
+  
     public void AddObserver(IEndGameObserver observer)
     {
         endGameObservers.Add(observer);

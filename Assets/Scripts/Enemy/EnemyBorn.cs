@@ -33,7 +33,6 @@ public class EnemyBorn : MonoBehaviour, IEndGameObserver
             colli.enabled = false;
             portal.SetActive(true);
             StartCoroutine(Born());
-            
         }
     }
 
@@ -47,7 +46,6 @@ public class EnemyBorn : MonoBehaviour, IEndGameObserver
     {
         enemy.SetActive(true);
         enemy.transform.position = basicPosition;
-        enemy.GetComponent<EnemyController>().isEscape = false;
         enemy.SetActive(false);
         portal.SetActive(false);
         colli.enabled = true;

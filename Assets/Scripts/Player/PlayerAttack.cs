@@ -19,9 +19,9 @@ public class PlayerAttack : MonoBehaviour
     }
     void OnTriggerEnter(Collider col)
     {
-        if (col.GetComponent<EnemyAI>()!= null)
+        if (col.GetComponent<EnemyController>()!= null)
         {
-            col.GetComponent<EnemyAI>().HP -= damage;
+            col.GetComponentInParent<EnemyBorn>().Die();
         }
     }
 }

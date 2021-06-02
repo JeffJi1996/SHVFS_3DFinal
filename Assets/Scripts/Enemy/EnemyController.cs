@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
-using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 
@@ -36,7 +35,7 @@ public class EnemyController : MonoBehaviour
     public bool isActive;
     public bool isChase;
     public bool isEscape;
-    bool isDead;
+    //bool isDead;
     private bool firstRun;
     private bool canEscape;
     private float countDown;
@@ -68,9 +67,11 @@ public class EnemyController : MonoBehaviour
 
     void SwitchStates()
     {
-        if (isDead)
-            enemyStates = EnemyStates.DEAD;
-        else if (isChase)
+        #region SwitchStates
+
+        // if (isDead)
+        //     enemyStates = EnemyStates.DEAD;
+        if (isChase)
             enemyStates = EnemyStates.CHASE;
         else if (isEscape)
             enemyStates = EnemyStates.ESCAPE;
@@ -82,7 +83,7 @@ public class EnemyController : MonoBehaviour
                 firstRun = true;
                 if (Vector3.Distance(transform.position, playerTrans.position) < attackRange)
                 {
-                    Debug.Log("Lose");
+                    GameManager.Instance.NotifyObservers();
                 }
                 firstRun = true;
                 break;
@@ -117,12 +118,14 @@ public class EnemyController : MonoBehaviour
                     GetNewWayPoint();
                 }
                 break;
-
         }
+        #endregion
     }
 
     private void GetNewWayPoint()
     {
+        #region GetNewPoint
+
         dirToPlayer = (playerTrans.position - transform.position).normalized;
         float randomX = 0;
         float randomZ = 0;
@@ -176,6 +179,7 @@ public class EnemyController : MonoBehaviour
         }
         Debug.Log("Don't have path");
         GetNewWayPoint();
+        #endregion
     }
 
     private void OnDrawGizmosSelected()
@@ -199,14 +203,5 @@ public class EnemyController : MonoBehaviour
             return false;
         }
     }
-
-    void OnTriggerEnter(Collider coll)
-    {
-        if (coll.GetComponent<PlayerAbilityControl>() != null && PlayerAbilityControl.instance.PowerUpState == false)
-        {
-            player.transform.position = player.GetComponent<PlayerMovement>().InitPosition;
-        }
-    }
-    
     
 }
