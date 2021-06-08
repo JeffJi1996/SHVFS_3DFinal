@@ -8,7 +8,7 @@ public class EnemyClose : MonoBehaviour
     public bool isEnemyClose;
     [SerializeField] private float fieldOfCloseArea;
     [SerializeField] private LayerMask enemyLayer;
-    private Collider[] enemyColliders;
+    public Collider[] enemyColliders;
 
     void Awake()
     {

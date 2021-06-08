@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWalkSound : MonoBehaviour
+public class PlayerWalkSound : Singleton<PlayerWalkSound>
 {
     private PlayerMovement playerMovement;
     private AudioSource audioSource;

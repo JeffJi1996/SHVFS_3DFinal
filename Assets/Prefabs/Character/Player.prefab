@@ -1968,6 +1968,7 @@ GameObject:
   - component: {fileID: 2697749476984443432}
   - component: {fileID: 4217283505181117696}
   - component: {fileID: 7360293715754320652}
+  - component: {fileID: 7572156418186886379}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -2211,6 +2212,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7572156418186886379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236818152064747346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb1e30cc41742b41a40dc3abe0c824f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEnemyClose: 0
+  fieldOfCloseArea: 20
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &6236818152894201276
 GameObject:
   m_ObjectHideFlags: 0

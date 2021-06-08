@@ -45,7 +45,7 @@ public class PlayerAbilityControl : MonoBehaviour
         if (col.GetComponent<SpecialCollection>() != null)
         {
             SoundManager.instance.PlaySound("sfx_transform");
-            Destroy(col.gameObject);
+            StartCoroutine(col.GetComponent<SpecialCollection>().BeCollected());
             PowerUp();
         }
     }
@@ -80,17 +80,7 @@ public class PlayerAbilityControl : MonoBehaviour
     IEnumerator BeingSuper()
     {
         SuperAbility();
-        // if (OnPowerUp != null)
-        // {
-        //     EventArgs e = new EventArgs();
-        //     OnPowerUp(this, e);
-        // }
         yield return new WaitForSeconds(superDuration);
-        // if (OnRecover != null)
-        // {
-        //     EventArgs e = new EventArgs();
-        //     OnRecover(this, e);
-        // }
         RecoverToHuman();
     }
 }

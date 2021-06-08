@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class EnemyDirection : MonoBehaviour
 {
-    public GameObject Player;
+    private GameObject Player;
     public GameObject Enemy;
 
 
-    [SerializeField] private Vector3 enemyVector3;
-    [SerializeField] private float RotateAngle;
-    [SerializeField] private float PlayerForwardAngle;
-    [SerializeField] private int RotateSign;
-    [SerializeField] private float PlayerForwardx;
+     private Vector3 enemyVector3;
+     private float RotateAngle;
+     private float PlayerForwardAngle;
+     private int RotateSign;
+     private float PlayerForwardx;
 
     private RectTransform transform;
 
     private void Start()
     {
+        Player = FindObjectOfType<PlayerMovement>().gameObject;
         transform = GetComponent<RectTransform>();
     }
     private void Update()
@@ -25,8 +26,6 @@ public class EnemyDirection : MonoBehaviour
         enemyVector3 = CalculateAngle();
         RotateAngle = Angle_360(new Vector3(0, 0, 1), enemyVector3);
         transform.rotation = Quaternion.Euler(0, 0, -RotateAngle);
-
-
     }
 
     Vector3 CalculateAngle()

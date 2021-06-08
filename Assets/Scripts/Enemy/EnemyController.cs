@@ -83,6 +83,7 @@ public class EnemyController : MonoBehaviour
                 firstRun = true;
                 if (Vector3.Distance(transform.position, playerTrans.position) < attackRange)
                 {
+                    LookAway.Instance.target = transform;
                     GameManager.Instance.NotifyObservers();
                 }
                 firstRun = true;
