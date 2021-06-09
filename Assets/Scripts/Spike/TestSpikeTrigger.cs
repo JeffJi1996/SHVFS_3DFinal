@@ -5,11 +5,11 @@ using UnityEngine;
 public class TestSpikeTrigger : MonoBehaviour
 {
     public Vector3 triggerDirection;
-    public Spike spike;
+    public SpikeManager SpikeManager;
 
     void Awake()
     {
-        spike = transform.parent.GetComponentInChildren<Spike>();
+        SpikeManager = transform.parent.GetComponentInChildren<SpikeManager>();
         var direction = transform.parent.position - transform.position;
         triggerDirection = new Vector3(direction.x, 0, direction.z).normalized;
     }
@@ -17,12 +17,12 @@ public class TestSpikeTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.GetComponent<PlayerMovement>() != null && spike.isActive == false)
+        if (col.GetComponent<PlayerMovement>() != null && SpikeManager.isActive == false)
         {
             var PlayerMoveDirection = col.GetComponent<VelocityComponent>().direction;
             if (Angle_360(PlayerMoveDirection, triggerDirection) < 90)
             {
-                spike.isActive = true;
+                SpikeManager.isActive = true;
             }
         }
     }
