@@ -1928,7 +1928,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d792b1d9920ed7747bac00965e805999, type: 2}
+  - {fileID: 2100000, guid: 00cc663230ec366448065bb7571f2fa3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2009,7 +2009,6 @@ MonoBehaviour:
   runSpeed: 8
   SuperSpeed: 10
   rotateDuration: 0.2
-  InitPosition: {x: 0, y: 0, z: 0}
 --- !u!136 &6236818152064747373
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2229,6 +2228,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
+  enemyColliders: []
 --- !u!1 &6236818152894201276
 GameObject:
   m_ObjectHideFlags: 0
