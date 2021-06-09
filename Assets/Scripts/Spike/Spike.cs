@@ -31,7 +31,7 @@ public class Spike : MonoBehaviour
 
     IEnumerator Puncture()
     {
-
+        yield break ;
     }
 
 }
