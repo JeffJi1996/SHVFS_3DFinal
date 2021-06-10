@@ -14,8 +14,13 @@ public class SpikeManager : MonoBehaviour
     [SerializeField] private float GoDownDuration;
     [SerializeField] private float existTime;
 
-    [Header("GoUpDistance")] [SerializeField]
-    private float GoUpPosition;
+    [Header("GoUpDistance")]
+    [SerializeField]private float GoUpPosition;
+
+    [Header("CountDown")]
+    [SerializeField] private float activeTime;
+    [SerializeField] private float nowTime;
+    
 
     void Awake()
     {
@@ -30,10 +35,15 @@ public class SpikeManager : MonoBehaviour
         {
             if (doOnce)
             {
-                StartCoroutine(Puncture());
+                transform.parent.GetComponentInChildren<Animator>().SetTrigger("StartHint");
                 doOnce = false;
             }
         }
+    }
+
+    public void ActiveSpike()
+    {
+        StartCoroutine(Puncture());
     }
 
     void GoUp()
@@ -43,7 +53,7 @@ public class SpikeManager : MonoBehaviour
 
     void GoDown()
     {
-        LeanTween.moveLocalY(gameObject,initialPosition.y,GoDownDuration).setEaseInQuint();
+        LeanTween.moveLocalY(gameObject,initialPosition.y,GoDownDuration).setEaseInQuint().setOnComplete(ChangeState);
     }
 
     IEnumerator Puncture()
@@ -52,5 +62,13 @@ public class SpikeManager : MonoBehaviour
         yield return new WaitForSeconds(GoUpDuration+existTime);
         GoDown();
     }
+
+    void ChangeState()
+    {
+        isActive = false;
+        
+    }
+
+    
 
 }
