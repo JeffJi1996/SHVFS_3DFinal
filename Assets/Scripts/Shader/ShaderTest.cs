@@ -13,6 +13,11 @@ public class ShaderTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Play effect");
+            GetComponent<ParticleSystem>().Play();
+        }
         
     }
 }
