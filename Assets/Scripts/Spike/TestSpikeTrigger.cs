@@ -20,7 +20,7 @@ public class TestSpikeTrigger : MonoBehaviour
         if (col.GetComponent<PlayerMovement>() != null && SpikeManager.isActive == false)
         {
             var PlayerMoveDirection = col.GetComponent<VelocityComponent>().direction;
-            if (Angle_360(PlayerMoveDirection, triggerDirection) < 90)
+            if (Angle_360(PlayerMoveDirection, triggerDirection) < 90|| Angle_360(triggerDirection, PlayerMoveDirection)<90)
             {
                 SpikeManager.isActive = true;
             }
