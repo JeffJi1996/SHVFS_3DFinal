@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBorn : MonoBehaviour, IEndGameObserver
+public class EnemyBorn : MonoBehaviour
 {
     public GameObject enemy;
     public GameObject portal;
-    public float reBornTime;
+    //public float reBornTime;
     public float bornTime;
     private Collider colli;
     private Vector3 basicPosition;
@@ -17,13 +17,13 @@ public class EnemyBorn : MonoBehaviour, IEndGameObserver
         basicPosition = enemy.GetComponent<Transform>().position;
         enemy.SetActive(false);
         portal.SetActive(false);
-        GameManager.Instance.AddObserver(this);
+        //GameManager.Instance.AddObserver(this);
     }
     
     void OnDisable()
     {
         if (!GameManager.IsInitialized) return;
-        GameManager.Instance.RemoveObserver(this);
+        //GameManager.Instance.RemoveObserver(this);
     }
     
     private void OnTriggerEnter(Collider other)
@@ -39,7 +39,7 @@ public class EnemyBorn : MonoBehaviour, IEndGameObserver
     public void Die()
     {
         enemy.SetActive(false);
-        StartCoroutine(Reborn());
+        //StartCoroutine(Reborn());
     }
  
     public void EndNotify()
@@ -57,12 +57,15 @@ public class EnemyBorn : MonoBehaviour, IEndGameObserver
         yield return new WaitForSeconds(bornTime);
         enemy.SetActive(true);
         portal.SetActive(false);
-        enemy.GetComponent<EnemyController>().isChase = true;
+        if (enemy.GetComponent<EnemyController>() != null)
+            enemy.GetComponent<EnemyController>().isChase = true;
+        else
+            enemy.GetComponent<BossController>().isChase = true;
     }
-    IEnumerator Reborn()
-    {
-        yield return new WaitForSeconds(reBornTime);
-        EndNotify();
-    }
+    // IEnumerator Reborn()
+    // {
+    //     yield return new WaitForSeconds(reBornTime);
+    //     EndNotify();
+    // }
     
 }

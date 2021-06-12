@@ -12,9 +12,9 @@ public enum EnemyStates { CHASE, PATOL, ESCAPE, DEAD }
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyController : MonoBehaviour
 {
-    private EnemyStates enemyStates;
-    private NavMeshAgent agent;
-    private Collider colli;
+    protected EnemyStates enemyStates;
+    protected NavMeshAgent agent;
+    protected Collider colli;
  
     [Header("Level Seting")]
     public float levelWidth;
@@ -25,22 +25,22 @@ public class EnemyController : MonoBehaviour
     public int floor;
     public float attackRange;
     public GameObject player;
-    private Transform playerTrans;
+    protected Transform playerTrans;
 
     [SerializeField]
-    private Vector3 escapePosition;
-    private Vector3 dirToPlayer;
+    protected Vector3 escapePosition;
+    protected Vector3 dirToPlayer;
     public LayerMask layerMask;
 
     public bool isActive;
     public bool isChase;
     public bool isEscape;
     //bool isDead;
-    private bool firstRun;
-    private bool canEscape;
-    private float countDown;
-    private float timer;
-    private void Awake()
+    protected bool firstRun;
+    protected bool canEscape;
+    protected float countDown;
+    protected float timer;
+    protected virtual void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         colli = GetComponent<Collider>();
@@ -58,72 +58,15 @@ public class EnemyController : MonoBehaviour
     }
 
     
-    private void Update()
+    protected virtual void Update()
     {
         isChase = !player.GetComponent<PlayerAbilityControl>().PowerUpState;
         isEscape = !isChase;
-        SwitchStates();
+        
     }
+    
 
-    void SwitchStates()
-    {
-        #region SwitchStates
-
-        // if (isDead)
-        //     enemyStates = EnemyStates.DEAD;
-        if (isChase)
-            enemyStates = EnemyStates.CHASE;
-        else if (isEscape)
-            enemyStates = EnemyStates.ESCAPE;
-
-        switch (enemyStates)
-        {
-            case EnemyStates.CHASE:
-                agent.destination = playerTrans.position;
-                firstRun = true;
-                if (Vector3.Distance(transform.position, playerTrans.position) < attackRange)
-                {
-                    LookAway.Instance.target = transform;
-                    GameManager.Instance.NotifyObservers();
-                }
-                firstRun = true;
-                break;
-            case EnemyStates.ESCAPE:
-                // if (firstRun)
-                // {
-                //     agent.destination = firstEscapePoint.position;
-                //     firstRun = !firstRun;
-                // }
-                if (firstRun == true)
-                {
-                    GetNewWayPoint();
-                    firstRun = false;
-                }
-                timer -= Time.deltaTime;
-                if (timer <= 0)
-                {
-                    canEscape = true;
-                    timer = countDown;
-                }
-                dirToPlayer = (playerTrans.position - transform.position).normalized;
-                if (canEscape && Vector3.Dot(transform.forward, dirToPlayer) > 0.5f && canSee() )
-                {
-                    canEscape = false;
-                    GetNewWayPoint();
-                    Debug.Log("Escape");
-                }
-
-                if (Vector3.Distance(transform.position, escapePosition) < 1.5f)
-                {
-                    Debug.Log("Arrive");
-                    GetNewWayPoint();
-                }
-                break;
-        }
-        #endregion
-    }
-
-    private void GetNewWayPoint()
+    protected void GetNewWayPoint()
     {
         #region GetNewPoint
 
@@ -189,18 +132,18 @@ public class EnemyController : MonoBehaviour
         Gizmos.DrawLine(transform.position,escapePosition);
     }
 
-    private bool canSee()
+    protected bool canSee()
     {
         Ray myRay = new Ray(transform.position, dirToPlayer);
         Physics.Raycast(myRay, out RaycastHit hitInfo,100f, layerMask,QueryTriggerInteraction.Ignore);
         if (hitInfo.collider.gameObject.GetComponent<PlayerAbilityControl>() != null)
         {
-            Debug.Log(hitInfo.collider.name);
+            //Debug.Log(hitInfo.collider.name);
             return true;
         }
         else
         {
-            Debug.Log(hitInfo.collider.name);
+            //Debug.Log(hitInfo.collider.name);
             return false;
         }
     }

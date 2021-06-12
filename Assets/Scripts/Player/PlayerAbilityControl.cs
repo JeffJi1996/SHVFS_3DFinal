@@ -18,6 +18,9 @@ public class PlayerAbilityControl : MonoBehaviour
     public Material material;
     private Material tempMaterial;
 
+    public ParticleSystem transEffect1;
+    public ParticleSystem transEffect2;
+
     // public event EventHandler OnPowerUp;
     // public event EventHandler OnRecover;
     [SerializeField] public float superDuration;
@@ -46,6 +49,8 @@ public class PlayerAbilityControl : MonoBehaviour
         {
             SoundManager.instance.PlaySound("sfx_transform");
             StartCoroutine(col.GetComponent<SpecialCollection>().BeCollected());
+            transEffect1.Play();
+            transEffect2.Play();
             PowerUp();
         }
     }

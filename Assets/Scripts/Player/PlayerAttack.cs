@@ -19,7 +19,7 @@ public class PlayerAttack : MonoBehaviour
     }
     void OnTriggerEnter(Collider col)
     {
-        if (col.GetComponent<EnemyController>()!= null)
+        if (col.GetComponent<NormalEnemyController>()!= null)
         {
             col.GetComponentInParent<EnemyBorn>().Die();
         }

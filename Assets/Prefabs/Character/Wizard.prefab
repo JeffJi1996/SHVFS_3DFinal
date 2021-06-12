@@ -144,7 +144,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9d9feda1114efb54ebdad5bf208195ee, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -289,8 +289,8 @@ GameObject:
   - component: {fileID: 1244837508308104876}
   - component: {fileID: 1244837508308104879}
   - component: {fileID: 1244837508308104878}
-  - component: {fileID: 1244837508308104865}
   - component: {fileID: 1244837508308104867}
+  - component: {fileID: 4504427240585631602}
   m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
@@ -400,30 +400,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1244837508308104865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1244837508308104866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a75f290c29666644a858d485ac2b598a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelWidth: 88
-  levelLength: 76
-  floor: 1
-  attackRange: 2
-  player: {fileID: 0}
-  escapePosition: {x: 0, y: 0, z: 0}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  isActive: 0
-  isChase: 0
-  isEscape: 0
 --- !u!82 &1244837508308104867
 AudioSource:
   m_ObjectHideFlags: 0
@@ -520,6 +496,30 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4504427240585631602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244837508308104866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d7f207a4c9e864e82f4718e129e61f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelWidth: 88
+  levelLength: 76
+  floor: 1
+  attackRange: 2
+  player: {fileID: 0}
+  escapePosition: {x: 0, y: 0, z: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  isActive: 0
+  isChase: 0
+  isEscape: 0
 --- !u!1 &1244837508833880725
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,7 +582,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 1244837508308104866}
   portal: {fileID: 1244837507602307708}
-  reBornTime: 5
   bornTime: 3
 --- !u!1 &1244837509050550244
 GameObject:

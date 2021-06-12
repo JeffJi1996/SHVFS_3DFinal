@@ -718,7 +718,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a113b902b04a53f44ade5a851ce1d423, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1989,6 +1989,7 @@ Transform:
   m_Children:
   - {fileID: 6236818151350330345}
   - {fileID: 6236818152894201273}
+  - {fileID: 7230300656404796336}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2081,8 +2082,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PowerUpState: 0
-  hand: {fileID: 0}
-  material: {fileID: 0}
+  hand: {fileID: 1369509756248299448}
+  material: {fileID: 2100000, guid: 00cc663230ec366448065bb7571f2fa3, type: 2}
+  transEffect1: {fileID: 7230300656404796337}
+  transEffect2: {fileID: 0}
   superDuration: 10
 --- !u!114 &2697749476984443432
 MonoBehaviour:
@@ -2328,3 +2331,70 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 300
   playerBody: {fileID: 6236818152064747372}
+--- !u!1001 &3457314141846977937
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6236818152064747372}
+    m_Modifications:
+    - target: {fileID: 5453270666586435105, guid: 74abaebb66eaf7f4d9885a5e85d21945, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453270666586435105, guid: 74abaebb66eaf7f4d9885a5e85d21945, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453270666586435105, guid: 74abaebb66eaf7f4d9885a5e85d21945, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453270666586435105, guid: 74abaebb66eaf7f4d9885a5e85d21945, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453270666586435105, guid: 74abaebb66eaf7f4d9885a5e85d21945, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453270666586435105, guid: 74abaebb66eaf7f4d9885a5e85d21945, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453270666586435105, guid: 74abaebb66eaf7f4d9885a5e85d21945, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453270666586435105, guid: 74abaebb66eaf7f4d9885a5e85d21945, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453270666586435105, guid: 74abaebb66eaf7f4d9885a5e85d21945, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453270666586435105, guid: 74abaebb66eaf7f4d9885a5e85d21945, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453270666586435105, guid: 74abaebb66eaf7f4d9885a5e85d21945, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453270666586435106, guid: 74abaebb66eaf7f4d9885a5e85d21945, type: 3}
+      propertyPath: m_Name
+      value: Mohu
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 74abaebb66eaf7f4d9885a5e85d21945, type: 3}
+--- !u!4 &7230300656404796336 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5453270666586435105, guid: 74abaebb66eaf7f4d9885a5e85d21945, type: 3}
+  m_PrefabInstance: {fileID: 3457314141846977937}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7230300656404796337 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5453270666586435104, guid: 74abaebb66eaf7f4d9885a5e85d21945, type: 3}
+  m_PrefabInstance: {fileID: 3457314141846977937}
+  m_PrefabAsset: {fileID: 0}
