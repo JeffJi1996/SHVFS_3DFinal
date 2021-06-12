@@ -24,7 +24,7 @@ public class EnemyController : MonoBehaviour
     private float speed;
     public int floor;
     public float attackRange;
-    public GameObject player;
+    private GameObject player;
     protected Transform playerTrans;
 
     [SerializeField]
@@ -44,7 +44,6 @@ public class EnemyController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         colli = GetComponent<Collider>();
-        playerTrans = player.transform;
         escapePosition = new Vector3(0,0,0);
         speed = agent.speed;
         firstRun = true;
@@ -54,7 +53,8 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
-        //GetNewWayPoint();
+        player = GameManager.Instance.player;
+        playerTrans = player.transform;
     }
 
     

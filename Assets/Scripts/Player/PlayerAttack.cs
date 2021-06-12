@@ -14,15 +14,7 @@ public class PlayerAttack : MonoBehaviour
     }
     void Update()
     {
-        if (isAtEgg)
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                Debug.Log("Increase the fill");
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !isAtEgg)
         {
             anim.SetTrigger("Attack");
         }

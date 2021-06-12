@@ -16,7 +16,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
     public float rotateDuration;
     private Rigidbody rb;
 
-
+    private RaycastHit hitInfo;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -62,5 +62,18 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
     }
 
+    public string LookAtThing()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hitInfo))
+        {
+            if (hitInfo.collider.GetComponent<ChongLuan>() != null)
+                PlayerAbilityControl.instance.AttackAbility.isAtEgg = true;
+            else
+                PlayerAbilityControl.instance.AttackAbility.isAtEgg = false;
+            return hitInfo.collider.name;
+        }
+        return null;
+    }
    
 }

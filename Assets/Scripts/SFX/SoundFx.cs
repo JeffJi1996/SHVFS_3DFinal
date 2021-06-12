@@ -52,7 +52,7 @@ public class SoundFx : MonoBehaviour {
     {
         audioSource.loop = false;
         audioSource.Stop();
-        Invoke("DisableSoundFx", audioSource.clip.length + 0.01f);
+        Invoke(nameof(DisableSoundFx), audioSource.clip.length + 0.01f);
     }
 
     private void DisableSoundFx()

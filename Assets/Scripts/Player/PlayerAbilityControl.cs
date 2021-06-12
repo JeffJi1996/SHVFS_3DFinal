@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class PlayerAbilityControl : MonoBehaviour
 {
     public static PlayerAbilityControl instance;
-    private PlayerAttack AttackAbility;
+    public PlayerAttack AttackAbility;
 
     private PlayerMovement playerMove;
 
@@ -24,11 +24,15 @@ public class PlayerAbilityControl : MonoBehaviour
     // public event EventHandler OnPowerUp;
     // public event EventHandler OnRecover;
     [SerializeField] public float superDuration;
-
+    
+    private float curDuration;
+    private bool playOnce;
     void Awake()
     {
         instance = this;
         PowerUpState = false;
+        curDuration = 0;
+        playOnce = false;
         tempMaterial = hand.GetComponent<SkinnedMeshRenderer>().material;
     }
 
@@ -43,11 +47,34 @@ public class PlayerAbilityControl : MonoBehaviour
         navMeshObstacle.enabled = false;
     }
 
+    private void Update()
+    {
+        if (curDuration >= 10f)
+        {
+            playOnce = true;
+            SuperAbility();
+        }
+        else if (curDuration <= 5f && curDuration >= 4.5f && playOnce)
+        {
+            playOnce = false;
+            SoundManager.instance.PlaySound("sfx_heartBeat");
+        }
+        else if (curDuration <= 0.2f && curDuration >= 0 && !playOnce)
+        {
+            playOnce = true;
+            SoundManager.instance.PlaySound("sfx_recover");
+            RecoverToHuman();
+        }
+        
+        curDuration -= Time.deltaTime;
+    }
+
     void OnTriggerEnter(Collider col)
     {
         if (col.GetComponent<SpecialCollection>() != null)
         {
             SoundManager.instance.PlaySound("sfx_transform");
+            SoundManager.instance.PlaySound("sfx_wolf");
             StartCoroutine(col.GetComponent<SpecialCollection>().BeCollected());
             transEffect1.Play();
             transEffect2.Play();
@@ -80,7 +107,8 @@ public class PlayerAbilityControl : MonoBehaviour
     void PowerUp()
     {
         PowerUpState = true;
-        StartCoroutine(BeingSuper());
+        curDuration = superDuration;
+        //StartCoroutine(BeingSuper());
     }
     IEnumerator BeingSuper()
     {

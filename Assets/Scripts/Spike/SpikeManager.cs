@@ -14,14 +14,23 @@ public class SpikeManager : MonoBehaviour
     [SerializeField] private float GoDownDuration;
     [SerializeField] private float existTime;
 
-    [Header("GoUpDistance")] [SerializeField]
-    private float GoUpPosition;
+    [Header("GoUpDistance")]
+    [SerializeField] private float GoUpPosition;
+
+    [Header("CountDown")]
+    [SerializeField] private bool isCountingDown;
+    [SerializeField] private float activeTime;
+    [SerializeField] private float nowTime;
+
 
     void Awake()
     {
         isActive = false;
+        isCountingDown = false;
         doOnce = true;
         initialPosition = transform.localPosition;
+        nowTime = activeTime;
+
     }
 
     void Update()
@@ -30,27 +39,55 @@ public class SpikeManager : MonoBehaviour
         {
             if (doOnce)
             {
-                StartCoroutine(Puncture());
+                transform.parent.GetComponentInChildren<Animator>().SetTrigger("StartHint");
                 doOnce = false;
             }
+
+
         }
+
+        if (isCountingDown)
+        {
+            nowTime -= Time.deltaTime;
+            if (nowTime <= 0)
+            {
+                nowTime = activeTime;
+                isActive = false;
+                doOnce = true;
+                isCountingDown = false;
+            }
+        }
+
+    }
+
+    public void ActiveSpike()
+    {
+        StartCoroutine(Puncture());
     }
 
     void GoUp()
     {
-        LeanTween.moveLocalY(this.gameObject,GoUpPosition,GoUpDuration).setEaseInQuint();
+        LeanTween.moveLocalY(this.gameObject, GoUpPosition, GoUpDuration).setEaseInQuint();
     }
 
     void GoDown()
     {
-        LeanTween.moveLocalY(gameObject,initialPosition.y,GoDownDuration).setEaseInQuint();
+        LeanTween.moveLocalY(gameObject, initialPosition.y, GoDownDuration).setEaseInQuint().setOnComplete(ChangeState);
     }
 
     IEnumerator Puncture()
     {
         GoUp();
-        yield return new WaitForSeconds(GoUpDuration+existTime);
+        yield return new WaitForSeconds(GoUpDuration + existTime);
         GoDown();
     }
+
+    void ChangeState()
+    {
+        isCountingDown = true;
+
+    }
+
+
 
 }

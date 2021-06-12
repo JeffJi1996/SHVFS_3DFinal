@@ -36,4 +36,10 @@ public class BossController : EnemyController
         }
 
     }
+
+    public void Die()
+    {
+        Debug.Log("Boss Die!!!");
+        Destroy(gameObject);
+    }
 }
