@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBorn : MonoBehaviour
+public class EnemyBorn : MonoBehaviour,IEndGameObserver
 {
     public GameObject enemy;
     public GameObject portal;
@@ -17,13 +17,13 @@ public class EnemyBorn : MonoBehaviour
         basicPosition = enemy.GetComponent<Transform>().position;
         enemy.SetActive(false);
         portal.SetActive(false);
-        //GameManager.Instance.AddObserver(this);
+        GameManager.Instance.AddObserver(this);
     }
     
     void OnDisable()
     {
         if (!GameManager.IsInitialized) return;
-        //GameManager.Instance.RemoveObserver(this);
+        GameManager.Instance.RemoveObserver(this);
     }
     
     private void OnTriggerEnter(Collider other)

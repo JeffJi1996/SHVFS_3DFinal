@@ -18977,24 +18977,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6236818152064747372, guid: b532804793680014dace3af41297a0ec, type: 3}
   m_PrefabInstance: {fileID: 2106307509}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2106307521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2106307510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddb1e30cc41742b41a40dc3abe0c824f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isEnemyClose: 0
-  fieldOfCloseArea: 20
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  enemyColliders: []
 --- !u!1001 &2106431207
 PrefabInstance:
   m_ObjectHideFlags: 0

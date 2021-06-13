@@ -100,8 +100,6 @@ public class PlayerAbilityControl : MonoBehaviour
         navMeshObstacle.enabled = false;
         playerMove.currentSpeed = playerMove.walkSpeed;
         hand.GetComponent<SkinnedMeshRenderer>().material = tempMaterial;
-
-
     }
 
     void PowerUp()

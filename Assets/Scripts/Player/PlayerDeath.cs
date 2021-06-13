@@ -3,29 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerDeath : Singleton<PlayerDeath>,IEndGameObserver
+public class PlayerDeath : Singleton<PlayerDeath>, IEndGameObserver
 {
     public int health;
     public bool doOnce;
     public bool doOnce1;
+    public bool isDeath;
+
+    public KillBy killBy;
+    public enum KillBy
+    {
+        NormalEnemy,
+        Boss,
+        Spike,
+    }
 
     public Vector3 InitPosition;
 
     private void Start()
     {
         InitPosition = transform.position;
-        
+
 
         GameManager.Instance.AddObserver(this);
         doOnce = true;
         doOnce1 = true;
+        isDeath = false;
     }
 
     private void Update()
     {
         //当主角结束转头后，播放笑声，同时开始打开黑色死亡界面
         if (LookAway.Instance.endRotate)
-        { 
+        {
             if (doOnce)
             {
                 SoundManager.instance.PlaySound("sfx_collect");
@@ -64,18 +74,31 @@ public class PlayerDeath : Singleton<PlayerDeath>,IEndGameObserver
         GameManager.Instance.RemoveObserver(this);
     }
     public void EndNotify()
-    { 
+    {
+        isDeath = true;
         health--;
         PlayerMovement.Instance.enabled = false;
         MouseLook.Instance.enabled = false;
 
-        LookAway.Instance.startRotate = true;
+        switch (killBy)
+        {
+            case KillBy.NormalEnemy:
+                LookAway.Instance.startRotate = true;
+                break;
+            case KillBy.Boss:
+                LookAway.Instance.startRotate = true;
+                break;
+            case KillBy.Spike:
+                DeathPanel.Instance.ShowDeath();
+                break;
+        }
 
         if (health <= 0)
         {
+
             SceneManager.LoadScene(0);
         }
-        
+
     }
 
     private void Reset()
@@ -83,6 +106,7 @@ public class PlayerDeath : Singleton<PlayerDeath>,IEndGameObserver
         transform.position = InitPosition;
         transform.eulerAngles = new Vector3(0, 0, 0);
         PowerUpManager.Instance.Reset();
+        isDeath = false;
     }
 
 }
