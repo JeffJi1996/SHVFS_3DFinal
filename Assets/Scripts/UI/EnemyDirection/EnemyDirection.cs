@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyDirection : MonoBehaviour
 {
     private GameObject Player;
     public GameObject Enemy;
 
+    [SerializeField] private Image fill1;
+    [SerializeField] private Image fill2;
+    [SerializeField] private GameObject sprites;
+    [SerializeField] private float detectRange;
 
-     private Vector3 enemyVector3;
-     private float RotateAngle;
-     private float PlayerForwardAngle;
-     private int RotateSign;
-     private float PlayerForwardx;
+    private Vector3 enemyVector3;
+    private float RotateAngle;
+    private float PlayerForwardAngle;
+
 
     private RectTransform transform;
 
@@ -26,6 +30,21 @@ public class EnemyDirection : MonoBehaviour
         enemyVector3 = CalculateAngle();
         RotateAngle = Angle_360(new Vector3(0, 0, 1), enemyVector3);
         transform.rotation = Quaternion.Euler(0, 0, -RotateAngle);
+
+        var distance = Vector3.Distance(Enemy.transform.position, Player.transform.position);
+
+        if (Enemy.activeSelf && distance<detectRange)
+        {
+            sprites.SetActive(true);
+            fill1.fillAmount = distance / detectRange;
+            fill2.fillAmount = fill1.fillAmount;
+        }
+        else
+        {
+            sprites.SetActive(false);
+        }
+
+
     }
 
     Vector3 CalculateAngle()
@@ -42,7 +61,7 @@ public class EnemyDirection : MonoBehaviour
         }
         else
         {
-            PianYi = Quaternion.Euler(0,360-PlayerForwardAngle,0);
+            PianYi = Quaternion.Euler(0, 360 - PlayerForwardAngle, 0);
         }
 
         Vector3 newRotateDirection = PianYi * PlayerEnemyDirection;

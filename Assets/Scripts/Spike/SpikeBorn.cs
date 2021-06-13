@@ -19,7 +19,7 @@ public class SpikeBorn : MonoBehaviour
 
     [Header("CountDown")]
     [SerializeField] private bool isCountingDown;
-    [SerializeField] private float activeTime;
+    private float activeTime;
     [SerializeField] private float nowTime;
 
 
@@ -35,6 +35,8 @@ public class SpikeBorn : MonoBehaviour
 
     void Update()
     {
+        activeTime = SpikeManager.Instance.nowActiveDuration;
+
         if (isActive)
         {
             if (doOnce)

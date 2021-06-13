@@ -6807,6 +6807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eggs: []
   isActive: 0
+  isShown: 0
   amount: 0
   Boss: {fileID: 118485992}
 --- !u!4 &685293551
@@ -17682,6 +17683,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1838102634}
+  - component: {fileID: 1838102635}
   m_Layer: 0
   m_Name: SpikeManager
   m_TagString: Untagged
@@ -17704,6 +17706,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1838102635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838102633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70b3641a44ff064ea8a815877b600b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NormalActiveTime: 10
+  BossActiveTime: 3
+  nowActiveDuration: 0
 --- !u!1001 &1845396232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18130,7 +18147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyNum: 0
-  BossState: 0
+  Boss: {fileID: 0}
 --- !u!4 &1878972044
 Transform:
   m_ObjectHideFlags: 0
