@@ -23,6 +23,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (col.GetComponent<NormalEnemyController>()!= null)
         {
+            NormalEnemyManager.Instance.enemyNum--;
             col.GetComponentInParent<EnemyBorn>().Die();
         }
     }
