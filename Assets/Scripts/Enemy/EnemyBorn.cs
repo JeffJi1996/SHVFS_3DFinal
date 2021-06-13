@@ -52,6 +52,11 @@ public class EnemyBorn : MonoBehaviour,IEndGameObserver
         StopAllCoroutines();
     }
 
+    public void BossBorn()
+    {
+        enemy.SetActive(true);
+    }
+    
     IEnumerator Born()
     {
         yield return new WaitForSeconds(bornTime);

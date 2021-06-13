@@ -188,7 +188,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3128664665106921125}
-  - component: {fileID: 3128664665106921126}
   - component: {fileID: 3128664665106921127}
   m_Layer: 6
   m_Name: BOSS
@@ -214,19 +213,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3128664665106921126
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3128664665106921120}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.8922882, y: 2.3183222, z: 4.021806}
-  m_Center: {x: 33.861313, y: 1.9908328, z: -0.11438531}
 --- !u!114 &3128664665106921127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -509,7 +495,6 @@ MonoBehaviour:
   levelLength: 0
   floor: 0
   attackRange: 0
-  player: {fileID: 0}
   escapePosition: {x: 0, y: 0, z: 0}
   layerMask:
     serializedVersion: 2

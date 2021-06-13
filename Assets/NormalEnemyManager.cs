@@ -5,19 +5,16 @@ using UnityEngine;
 public class NormalEnemyManager : Singleton<NormalEnemyManager>
 {
     public int enemyNum;
-    public bool BossState;
+    public GameObject Boss;
 
     void Start()
     {
         enemyNum = transform.childCount;
-        BossState = false;
     }
 
-    void Update()
+    public void BossState()
     {
-        if (enemyNum == 0)
-        {
-            BossState = true;
-        }
+        EggManager.Instance.ShowEggs();
+        Boss.GetComponent<EnemyBorn>().BossBorn();
     }
 }

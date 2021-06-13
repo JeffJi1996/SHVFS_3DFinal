@@ -1,12 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EggManager : Singleton<EggManager>
+public class EggManager : Singleton<EggManager>,IEndGameObserver
 {
     // Start is called before the first frame update
     public List<ChongLuan> eggs;
     public bool isActive;
+    public bool isShown;
     public int amount;
     public GameObject Boss;
     protected override void Awake()
@@ -18,6 +20,10 @@ public class EggManager : Singleton<EggManager>
                 eggs.Add(child.GetComponent<ChongLuan>()); 
         }
         amount = eggs.Count;
+        foreach (var egg in eggs)
+        {
+            egg.gameObject.SetActive(false);
+        }
     }
 
 
@@ -25,15 +31,43 @@ public class EggManager : Singleton<EggManager>
     void Update()
     {
         isActive = false;
-        foreach (var egg in eggs)
+        if (isShown)
         {
-            if (egg.isActive)
-                isActive = true;
+            foreach (var egg in eggs)
+            {
+                if (egg.isActive)
+                    isActive = true;
+            }
+
+            if (!isActive)
+            {
+                UIManager.Instance.breakPanel.SetActive(false);
+            }
+        }
+    }
+
+    public void EndNotify()
+    {
+        if (eggs.Count >= 1)
+        {
+            foreach (var egg in eggs)
+            {
+                egg.gameObject.SetActive(false);
+            }
         }
 
-        if (!isActive)
+        isShown = false;
+    }
+
+    public void ShowEggs()
+    {
+        isShown = true;
+        if (eggs.Count >= 1)
         {
-            UIManager.Instance.breakPanel.SetActive(false);
+            foreach (var egg in eggs)
+            {
+                egg.gameObject.SetActive(true);
+            }
         }
     }
 }

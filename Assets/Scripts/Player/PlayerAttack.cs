@@ -24,6 +24,10 @@ public class PlayerAttack : MonoBehaviour
         if (col.GetComponent<NormalEnemyController>()!= null)
         {
             NormalEnemyManager.Instance.enemyNum--;
+            if (NormalEnemyManager.Instance.enemyNum <= 0)
+            {
+                NormalEnemyManager.Instance.BossState();
+            }
             col.GetComponentInParent<EnemyBorn>().Die();
         }
     }
