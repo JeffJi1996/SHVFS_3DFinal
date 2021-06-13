@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class BossController : EnemyController
 {
-    public int health;
-    
     protected override void Update()
     {
         base.Update();
         SwitchStates();
-        if(health <= 0)
-            Destroy(transform.parent.gameObject);
     }
     
     void SwitchStates()
@@ -28,6 +24,7 @@ public class BossController : EnemyController
                 if (Vector3.Distance(transform.position, playerTrans.position) < attackRange)
                 {
                     LookAway.Instance.target = transform;
+                    PlayerDeath.Instance.killBy = PlayerDeath.KillBy.NormalEnemy;
                     GameManager.Instance.NotifyObservers();
                 }
 

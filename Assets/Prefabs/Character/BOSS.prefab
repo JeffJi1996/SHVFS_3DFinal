@@ -491,10 +491,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be0fdc3a3616c494bb0006a0aa71140d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelWidth: 0
-  levelLength: 0
-  floor: 0
-  attackRange: 0
+  levelWidth: 88
+  levelLength: 76
+  floor: 1
+  attackRange: 3
   escapePosition: {x: 0, y: 0, z: 0}
   layerMask:
     serializedVersion: 2
@@ -502,7 +502,6 @@ MonoBehaviour:
   isActive: 0
   isChase: 0
   isEscape: 0
-  health: 0
 --- !u!1 &3325060950494052744
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,8 @@ public class EggManager : Singleton<EggManager>,IEndGameObserver
     public bool isActive;
     public bool isShown;
     public int amount;
+    public int startAmount;
+    public int targetAmount;
     public GameObject Boss;
     protected override void Awake()
     {
@@ -20,6 +22,7 @@ public class EggManager : Singleton<EggManager>,IEndGameObserver
                 eggs.Add(child.GetComponent<ChongLuan>()); 
         }
         amount = eggs.Count;
+        startAmount = amount;
         foreach (var egg in eggs)
         {
             egg.gameObject.SetActive(false);

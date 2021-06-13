@@ -31,7 +31,6 @@ public class EnemyBorn : MonoBehaviour,IEndGameObserver
         if (other.GetComponent<PlayerMovement>() != null)
         {
             colli.enabled = false;
-            portal.SetActive(true);
             StartCoroutine(Born());
         }
     }
@@ -48,17 +47,19 @@ public class EnemyBorn : MonoBehaviour,IEndGameObserver
         enemy.transform.position = basicPosition;
         enemy.SetActive(false);
         portal.SetActive(false);
-        colli.enabled = true;
+        if(colli != null)
+            colli.enabled = true;
         StopAllCoroutines();
     }
 
     public void BossBorn()
     {
-        enemy.SetActive(true);
+        StartCoroutine(Born());
     }
     
     IEnumerator Born()
     {
+        portal.SetActive(true);
         yield return new WaitForSeconds(bornTime);
         enemy.SetActive(true);
         portal.SetActive(false);

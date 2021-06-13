@@ -2082,6 +2082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3685464d26641894d8d7ab71f000e505, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackAbility: {fileID: 0}
   PowerUpState: 0
   hand: {fileID: 1369509756248299448}
   material: {fileID: 2100000, guid: 00cc663230ec366448065bb7571f2fa3, type: 2}
@@ -2387,7 +2388,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mohu
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8503301700273884160, guid: 74abaebb66eaf7f4d9885a5e85d21945, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 74abaebb66eaf7f4d9885a5e85d21945, type: 3}
 --- !u!4 &7230300656404796336 stripped
 Transform:

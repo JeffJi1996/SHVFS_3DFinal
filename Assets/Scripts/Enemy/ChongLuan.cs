@@ -45,14 +45,16 @@ public class ChongLuan : MonoBehaviour
                 {
                     UIManager.Instance.breakPanel.SetActive(true);
                     UIManager.Instance.curBreakImage.fillAmount = curHealth / maxHealth;
-                    Debug.Log(UIManager.Instance.curBreakImage.fillAmount);
+                    //Debug.Log(UIManager.Instance.curBreakImage.fillAmount);
                     if (curHealth >= maxHealth)
                     {
                         EggManager.Instance.eggs.Remove(this);
                         EggManager.Instance.amount--;
-                        if (EggManager.Instance.amount <= 0)
+                        UIManager.Instance.BossHealth(EggManager.Instance.targetAmount - EggManager.Instance.startAmount 
+                                                      + EggManager.Instance.amount,EggManager.Instance.targetAmount);
+                        if (EggManager.Instance.amount <= EggManager.Instance.startAmount - EggManager.Instance.targetAmount)
                         {
-                            //EggManager.Instance.Boss.GetComponent<BossController>().Die();
+                            EggManager.Instance.Boss.GetComponentInChildren<BossController>().Die();
                         }
                         Destroy(gameObject);
                     }
