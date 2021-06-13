@@ -39,7 +39,7 @@ public class ChongLuan : MonoBehaviour
                 }
 
                 curHealth = Mathf.Min(curHealth, maxHealth);
-                Debug.Log(curHealth);
+                //Debug.Log(curHealth);
                 isActive = true;
                 if (EggManager.Instance.isActive)
                 {
