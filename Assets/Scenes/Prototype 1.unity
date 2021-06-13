@@ -1611,6 +1611,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   breakPanel: {fileID: 1485887104}
   curBreakImage: {fileID: 2103684605}
+  bossHealthPanel: {fileID: 0}
+  curHealth: {fileID: 0}
+  decreaseBar: {fileID: 0}
+  lastTime: 0
 --- !u!1 &216025663 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ee2924cd389bf0a41898c9db688c5a2e, type: 3}
@@ -4868,6 +4872,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.04000001, y: 0.04, z: 0.080000006}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &516641418 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1244837508308104866, guid: 765078e59ec79f94e877a232397e3d04, type: 3}
+  m_PrefabInstance: {fileID: 105378782}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519404134
 GameObject:
   m_ObjectHideFlags: 0
@@ -6809,6 +6818,8 @@ MonoBehaviour:
   isActive: 0
   isShown: 0
   amount: 0
+  startAmount: 0
+  targetAmount: 0
   Boss: {fileID: 118485992}
 --- !u!4 &685293551
 Transform:
@@ -6939,18 +6950,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1817445166}
     m_Modifications:
+    - target: {fileID: 4667272283051468355, guid: a105bc93145cb9144a420aa11193414b, type: 3}
+      propertyPath: m_FillAmount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5602409857728514554, guid: a105bc93145cb9144a420aa11193414b, type: 3}
       propertyPath: m_Name
       value: EnemyDirection
       objectReference: {fileID: 0}
     - target: {fileID: 5602409857728514554, guid: a105bc93145cb9144a420aa11193414b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5602409857728514556, guid: a105bc93145cb9144a420aa11193414b, type: 3}
       propertyPath: Enemy
       value: 
-      objectReference: {fileID: 1122397435}
+      objectReference: {fileID: 516641418}
     - target: {fileID: 5602409857728514557, guid: a105bc93145cb9144a420aa11193414b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7033,6 +7048,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5602409857728514557, guid: a105bc93145cb9144a420aa11193414b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9123505992534419578, guid: a105bc93145cb9144a420aa11193414b, type: 3}
+      propertyPath: m_FillAmount
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -11024,11 +11043,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6522688047879548057, guid: 4b17ffa8f661e79468cd9a829d268c00, type: 3}
   m_PrefabInstance: {fileID: 1573113467}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1122397435 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9138671397943048319, guid: 5a199eab15e43024a99d1b96ab7dff5a, type: 3}
-  m_PrefabInstance: {fileID: 1800356578}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1125044739
 PrefabInstance:
@@ -17295,7 +17309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8601838802538926045, guid: 5a199eab15e43024a99d1b96ab7dff5a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a199eab15e43024a99d1b96ab7dff5a, type: 3}

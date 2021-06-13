@@ -92,7 +92,7 @@ public class PlayerAbilityControl : MonoBehaviour
 
     }
 
-    void RecoverToHuman()
+    public void RecoverToHuman()
     {
         MiniMap.instance.HideEnemyIcon();
         PowerUpState = false;

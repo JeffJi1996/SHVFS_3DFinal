@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 3128664665658944150}
   - component: {fileID: 8850468648386029852}
   m_Layer: 7
-  m_Name: Capsule
+  m_Name: BossCapsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

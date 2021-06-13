@@ -33,17 +33,19 @@ public class EnemyDirection : MonoBehaviour
 
         var distance = Vector3.Distance(Enemy.transform.position, Player.transform.position);
 
-        if (Enemy.activeSelf && distance<detectRange)
+        if (Enemy != null)
         {
-            sprites.SetActive(true);
-            fill1.fillAmount = distance / detectRange;
-            fill2.fillAmount = fill1.fillAmount;
+            if (Enemy.activeSelf && distance < detectRange)
+            {
+                sprites.SetActive(true);
+                fill1.fillAmount = distance / detectRange;
+                fill2.fillAmount = fill1.fillAmount;
+            }
+            else
+            {
+                sprites.SetActive(false);
+            }
         }
-        else
-        {
-            sprites.SetActive(false);
-        }
-
 
     }
 

@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 1244837508308104867}
   - component: {fileID: 4504427240585631602}
   m_Layer: 7
-  m_Name: Capsule
+  m_Name: normalCapsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -415,7 +415,6 @@ MonoBehaviour:
   levelLength: 76
   floor: 1
   attackRange: 2
-  player: {fileID: 0}
   escapePosition: {x: 0, y: 0, z: 0}
   layerMask:
     serializedVersion: 2

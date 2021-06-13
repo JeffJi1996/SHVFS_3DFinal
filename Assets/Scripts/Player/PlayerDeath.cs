@@ -107,6 +107,7 @@ public class PlayerDeath : Singleton<PlayerDeath>, IEndGameObserver
         transform.eulerAngles = new Vector3(0, 0, 0);
         PowerUpManager.Instance.Reset();
         isDeath = false;
+        PlayerAbilityControl.instance.RecoverToHuman();
     }
 
 }
