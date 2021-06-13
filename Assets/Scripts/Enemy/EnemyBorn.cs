@@ -43,13 +43,16 @@ public class EnemyBorn : MonoBehaviour,IEndGameObserver
  
     public void EndNotify()
     {
-        enemy.SetActive(true);
-        enemy.transform.position = basicPosition;
-        enemy.SetActive(false);
-        portal.SetActive(false);
-        if(colli != null)
-            colli.enabled = true;
-        StopAllCoroutines();
+        if (GameManager.Instance.isBossState && GetComponentInChildren<BossController>() != null)
+        {
+            StopAllCoroutines();
+            StartCoroutine(BossDelayTrans());
+        }
+        else if(!GameManager.Instance.isBossState && GetComponentInChildren<NormalEnemyController>() != null)
+        {
+            StopAllCoroutines();
+            StartCoroutine(DelayTrans());
+        }
     }
 
     public void BossBorn()
@@ -68,6 +71,31 @@ public class EnemyBorn : MonoBehaviour,IEndGameObserver
         else
             enemy.GetComponent<BossController>().isChase = true;
     }
+
+    IEnumerator DelayTrans()
+    {
+        yield return new WaitForSeconds(2f);
+        enemy.SetActive(true);
+        enemy.SetActive(false);
+        portal.SetActive(false);
+        if(colli != null)
+            colli.enabled = true;
+        enemy.transform.position = basicPosition;
+    }
+    
+    IEnumerator BossDelayTrans()
+    {
+        yield return new WaitForSeconds(2f);
+        enemy.SetActive(true);
+        enemy.SetActive(false);
+        portal.SetActive(false);
+        if(colli != null)
+            colli.enabled = true;
+        enemy.transform.position = basicPosition;
+        StartCoroutine(Born());
+    }
+    
+    
     // IEnumerator Reborn()
     // {
     //     yield return new WaitForSeconds(reBornTime);

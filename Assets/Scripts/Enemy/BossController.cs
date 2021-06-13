@@ -21,7 +21,7 @@ public class BossController : EnemyController
             case EnemyStates.CHASE:
                 agent.destination = playerTrans.position;
                 firstRun = true;
-                if (Vector3.Distance(transform.position, playerTrans.position) < attackRange)
+                if (Vector3.Distance(transform.position, playerTrans.position) < attackRange && PlayerDeath.Instance.isDeath==false)
                 {
                     LookAway.Instance.target = transform;
                     PlayerDeath.Instance.killBy = PlayerDeath.KillBy.NormalEnemy;

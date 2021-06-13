@@ -51,15 +51,14 @@ public class EggManager : Singleton<EggManager>,IEndGameObserver
 
     public void EndNotify()
     {
-        if (eggs.Count >= 1)
+        if (!GameManager.Instance.isBossState)
         {
             foreach (var egg in eggs)
             {
                 egg.gameObject.SetActive(false);
             }
+            isShown = false;
         }
-
-        isShown = false;
     }
 
     public void ShowEggs()

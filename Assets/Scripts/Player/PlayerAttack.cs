@@ -27,6 +27,7 @@ public class PlayerAttack : MonoBehaviour
             if (NormalEnemyManager.Instance.enemyNum <= 0)
             {
                 NormalEnemyManager.Instance.BossState();
+                GameManager.Instance.isBossState = true;
             }
             col.GetComponentInParent<EnemyBorn>().Die();
         }
