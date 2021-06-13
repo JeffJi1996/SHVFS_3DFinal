@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class SpikeManager : MonoBehaviour
+public class SpikeBorn : MonoBehaviour
 {
     public bool isActive;
     private bool doOnce;

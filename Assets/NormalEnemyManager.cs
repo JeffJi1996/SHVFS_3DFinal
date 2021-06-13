@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NormalEnemyManager : Singleton<NormalEnemyManager>
+public class NormalEnemyManager : Singleton<NormalEnemyManager>,IEndGameObserver
 {
     public int enemyNum;
     public GameObject Boss;
@@ -16,5 +16,11 @@ public class NormalEnemyManager : Singleton<NormalEnemyManager>
     {
         EggManager.Instance.ShowEggs();
         Boss.GetComponent<EnemyBorn>().BossBorn();
+        SpikeManager.Instance.ChangeSpikeActiveTime();
+    }
+
+    public void EndNotify()
+    {
+        enemyNum = transform.childCount;
     }
 }

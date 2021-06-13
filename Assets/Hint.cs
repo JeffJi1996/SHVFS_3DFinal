@@ -7,6 +7,6 @@ public class Hint : MonoBehaviour
     
     void StartToSpike()
     {
-        transform.parent.GetComponentInChildren<SpikeManager>().ActiveSpike();
+        transform.parent.GetComponentInChildren<SpikeBorn>().ActiveSpike();
     }
 }
