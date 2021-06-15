@@ -31,5 +31,11 @@ public class PlayerAttack : MonoBehaviour
             }
             col.GetComponentInParent<EnemyBorn>().Die();
         }
+
+        if (col.GetComponent<Plank>() !=null)
+        {
+            col.gameObject.SetActive(false);
+        }
+
     }
 }

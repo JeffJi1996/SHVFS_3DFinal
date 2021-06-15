@@ -108,6 +108,7 @@ public class PlayerDeath : Singleton<PlayerDeath>, IEndGameObserver
         PowerUpManager.Instance.Reset();
         isDeath = false;
         PlayerAbilityControl.instance.RecoverToHuman();
+        PlankManager.Instance.Reset();
     }
 
 }

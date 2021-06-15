@@ -1970,6 +1970,8 @@ GameObject:
   - component: {fileID: 4217283505181117696}
   - component: {fileID: 7360293715754320652}
   - component: {fileID: 7572156418186886379}
+  - component: {fileID: 120076605909205901}
+  - component: {fileID: 2156691545724400505}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -2234,6 +2236,39 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   enemyColliders: []
+--- !u!114 &120076605909205901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236818152064747346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bfda604e76bd5e4cbbda943cfaabde3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  doOnce: 0
+  doOnce1: 0
+  isDeath: 0
+  killBy: 0
+  InitPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &2156691545724400505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236818152064747346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad97b2274a16ece4a83471c603eab672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Multiplier: 10000
+  Dampening: 30
+  direction: {x: 0, y: 0, z: 0}
 --- !u!1 &6236818152894201276
 GameObject:
   m_ObjectHideFlags: 0
