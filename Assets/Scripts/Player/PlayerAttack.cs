@@ -17,12 +17,14 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && !isAtEgg)
         {
             anim.SetTrigger("Attack");
+            SoundManager.instance.PlaySound("sfx_playerPunchwolf");
         }
     }
     void OnTriggerEnter(Collider col)
     {
         if (col.GetComponent<NormalEnemyController>()!= null)
         {
+            SoundManager.instance.PlaySound("sfx_enemy01Hurt");
             NormalEnemyManager.Instance.enemyNum--;
             if (NormalEnemyManager.Instance.enemyNum <= 0)
             {
@@ -32,8 +34,9 @@ public class PlayerAttack : MonoBehaviour
             col.GetComponentInParent<EnemyBorn>().Die();
         }
 
-        if (col.GetComponent<Plank>() !=null)
+        else if (col.GetComponent<Plank>() != null)
         {
+            SoundManager.instance.PlaySound("sfx_playerBreakWood");
             col.gameObject.SetActive(false);
         }
 

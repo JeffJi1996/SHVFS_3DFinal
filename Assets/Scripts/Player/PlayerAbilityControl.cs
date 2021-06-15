@@ -126,7 +126,6 @@ public class PlayerAbilityControl : MonoBehaviour
     {
         transEffect1.Play();
         transEffect2.loop = true;
-        
         AttackAbility.enabled = true;
         navMeshObstacle.enabled = true;
         playerMove.currentSpeed = playerMove.SuperSpeed;

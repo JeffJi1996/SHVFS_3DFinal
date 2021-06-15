@@ -45,7 +45,9 @@ public class BossController : EnemyController
         attackRange = 0;
         agent.baseOffset = 1;
         agent.isStopped = true;
+        GetComponent<AudioSource>().enabled = false;
         PlayerAbilityControl.instance.isBossDead = true;
+        SoundManager.instance.PlaySound("sfx_BossDeath");
         PlayerAbilityControl.instance.BossDeadState();
     }
 }

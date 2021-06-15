@@ -77,7 +77,11 @@ public class EnemyBorn : MonoBehaviour,IEndGameObserver
         if (enemy.GetComponent<EnemyController>() != null)
             enemy.GetComponent<EnemyController>().isChase = true;
         else
+        {
             enemy.GetComponent<BossController>().isChase = true;
+            SoundManager.instance.PlaySound("sfx_bossRaw");
+        }
+        
     }
 
     IEnumerator DelayTrans()
