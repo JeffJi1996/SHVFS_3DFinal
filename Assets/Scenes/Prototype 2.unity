@@ -11104,10 +11104,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - {fileID: 8300000, guid: c2872febcf4fedc439d993460d589a9e, type: 3}
-  - {fileID: 8300000, guid: f404dd8697f37be43be104cb62fe74a6, type: 3}
-  - {fileID: 8300000, guid: 7db9145ee9e9be94ea75609c53bd0906, type: 3}
+  - {fileID: 8300000, guid: 5a648df81096bf94c981e7bd6607312f, type: 3}
+  - {fileID: 8300000, guid: 21e68f9daff1b9849afd1655ac16b4f3, type: 3}
   - {fileID: 8300000, guid: 2aeac41f4390834458ecc1be99912323, type: 3}
   - {fileID: 8300000, guid: 8a3289b46bf83ed418b0dd8c12390513, type: 3}
+  - {fileID: 8300000, guid: fb7360aa7a0a3a64c9b797eb521b2e45, type: 3}
 --- !u!4 &1042610533
 Transform:
   m_ObjectHideFlags: 0
