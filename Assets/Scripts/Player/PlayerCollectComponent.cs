@@ -29,7 +29,7 @@ public class PlayerCollectComponent : MonoBehaviour
     {
         if (col.GetComponent<Collection>() != null)
         {
-            SoundManager.instance.PlaySound("sfx_collect");
+            //SoundManager.instance.PlaySound("sfx_collect");
             Destroy(col.gameObject);
             collectionAmount++;
         }

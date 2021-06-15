@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 
-public enum EnemyStates { CHASE, PATOL, ESCAPE, DEAD }
+public enum EnemyStates { CHASE, PATOL, ESCAPE, CATCH }
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyController : MonoBehaviour
@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour
     public float levelLength;
     
     [Header("Basic Settings")]
-    private float speed;
+    protected float speed;
     public int floor;
     public float attackRange;
     private GameObject player;
@@ -35,6 +35,7 @@ public class EnemyController : MonoBehaviour
     public bool isActive;
     public bool isChase;
     public bool isEscape;
+    public bool isCaught;
     //bool isDead;
     protected bool firstRun;
     protected bool canEscape;

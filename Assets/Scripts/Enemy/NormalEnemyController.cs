@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class NormalEnemyController : EnemyController
 {
@@ -17,13 +18,21 @@ public class NormalEnemyController : EnemyController
 
         // if (isDead)
         //     enemyStates = EnemyStates.DEAD;
-        if (isChase)
+        if (isCaught)
+            enemyStates = EnemyStates.CATCH;
+        else if (isChase)
             enemyStates = EnemyStates.CHASE;
         else if (isEscape)
             enemyStates = EnemyStates.ESCAPE;
 
         switch (enemyStates)
         {
+            case EnemyStates.CATCH:
+                transform.forward = new Vector3(playerTrans.position.x - transform.position.x,0, playerTrans.position.z - transform.position.z).normalized;
+                //agent.destination = transform.position;
+                //agent.isStopped = true;
+                agent.enabled = false;
+                break;
             case EnemyStates.CHASE:
                 agent.destination = playerTrans.position;
                 firstRun = true;

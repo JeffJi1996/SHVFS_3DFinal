@@ -14,6 +14,7 @@ public class PlayerAbilityControl : MonoBehaviour
     private NavMeshObstacle navMeshObstacle;
 
     public bool PowerUpState;
+    public bool isBossDead;
     public GameObject hand;
     public Material material;
     private Material tempMaterial;
@@ -34,6 +35,7 @@ public class PlayerAbilityControl : MonoBehaviour
         curDuration = 0;
         playOnce = false;
         tempMaterial = hand.GetComponent<SkinnedMeshRenderer>().material;
+        hand.SetActive(false);
     }
 
     // Start is called before the first frame update
@@ -59,22 +61,25 @@ public class PlayerAbilityControl : MonoBehaviour
             playOnce = false;
             SoundManager.instance.PlaySound("sfx_heartBeat");
         }
-        else if (curDuration <= 0.2f && curDuration >= 0 && !playOnce)
+        else if (curDuration <= 0.1f && curDuration > 0 && !playOnce)
         {
             playOnce = true;
-            SoundManager.instance.PlaySound("sfx_recover");
-            RecoverToHuman();
+            if (!isBossDead)
+            {
+                SoundManager.instance.PlaySound("sfx_recover");
+                RecoverToHuman();
+            }
         }
-        
         curDuration -= Time.deltaTime;
     }
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.GetComponent<SpecialCollection>() != null)
+        if (col.GetComponent<SpecialCollection>() != null && !isBossDead)
         {
             SoundManager.instance.PlaySound("sfx_transform");
-            SoundManager.instance.PlaySound("sfx_wolf");
+            SoundManager.instance.PlaySound("sfx_werewolf_Row");
+            SoundManager.instance.PlaySound("sfx_collectStone");
             StartCoroutine(col.GetComponent<SpecialCollection>().BeCollected());
             transEffect1.Play();
             transEffect2.Play();
@@ -88,6 +93,7 @@ public class PlayerAbilityControl : MonoBehaviour
         navMeshObstacle.enabled = true;
         playerMove.currentSpeed = playerMove.SuperSpeed;
         MiniMap.instance.ShowEnemyIcon(1);
+        hand.SetActive(true);
         hand.GetComponent<SkinnedMeshRenderer>().material = material;
 
     }
@@ -100,6 +106,7 @@ public class PlayerAbilityControl : MonoBehaviour
         navMeshObstacle.enabled = false;
         playerMove.currentSpeed = playerMove.walkSpeed;
         hand.GetComponent<SkinnedMeshRenderer>().material = tempMaterial;
+        hand.SetActive(false);
     }
 
     void PowerUp()
@@ -113,5 +120,19 @@ public class PlayerAbilityControl : MonoBehaviour
         SuperAbility();
         yield return new WaitForSeconds(superDuration);
         RecoverToHuman();
+    }
+
+    public void BossDeadState()
+    {
+        transEffect1.Play();
+        transEffect2.loop = true;
+        
+        AttackAbility.enabled = true;
+        navMeshObstacle.enabled = true;
+        playerMove.currentSpeed = playerMove.SuperSpeed;
+        navMeshObstacle.enabled = false;
+        MiniMap.instance.ShowEnemyIcon(1);
+        hand.SetActive(true);
+        hand.GetComponent<SkinnedMeshRenderer>().material = material;
     }
 }

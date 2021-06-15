@@ -38,7 +38,7 @@ public class EnemyDirection : MonoBehaviour
             if (Enemy.activeSelf && distance < detectRange)
             {
                 sprites.SetActive(true);
-                fill1.fillAmount = distance / detectRange;
+                fill1.fillAmount = 1-(distance - Enemy.GetComponent<EnemyController>().attackRange) / (detectRange - Enemy.GetComponent<EnemyController>().attackRange);
                 fill2.fillAmount = fill1.fillAmount;
             }
             else

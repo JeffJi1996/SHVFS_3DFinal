@@ -228,6 +228,7 @@ MonoBehaviour:
   enemy: {fileID: 3128664665658944151}
   portal: {fileID: 5508012175754747049}
   bornTime: 3
+  agent: {fileID: 3128664665658944155}
 --- !u!1 &3128664665461742545
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,7 +381,7 @@ NavMeshAgent:
   m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 1
+  m_BaseOffset: 2
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!82 &3128664665658944150
@@ -494,7 +495,7 @@ MonoBehaviour:
   levelWidth: 88
   levelLength: 76
   floor: 1
-  attackRange: 3
+  attackRange: 4
   escapePosition: {x: 0, y: 0, z: 0}
   layerMask:
     serializedVersion: 2
@@ -502,6 +503,7 @@ MonoBehaviour:
   isActive: 0
   isChase: 0
   isEscape: 0
+  isCaught: 0
 --- !u!1 &3325060950494052744
 GameObject:
   m_ObjectHideFlags: 0

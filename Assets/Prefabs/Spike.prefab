@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7192840588984562636}
   - component: {fileID: 7192840588984562639}
   - component: {fileID: 7089938071487320315}
+  - component: {fileID: 3687607593522886197}
   m_Layer: 0
   m_Name: Meshes
   m_TagString: Untagged
@@ -53,7 +54,6 @@ MonoBehaviour:
   existTime: 3
   GoUpPosition: -0.5
   isCountingDown: 0
-  activeTime: 5
   nowTime: 0
 --- !u!114 &7089938071487320315
 MonoBehaviour:
@@ -67,6 +67,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b4dfe940b247e48939b2918981ab72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &3687607593522886197
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7192840588984562637}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.2472572, y: 4.8362207, z: 1.1078424}
+  m_Center: {x: -0.6038923, y: 2.222083, z: -0.0166471}
 --- !u!1 &7192840589062851595
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,7 +484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerDirection: {x: 0, y: 0, z: 0}
-  SpikeManager: {fileID: 0}
+  SpikeBorn: {fileID: 0}
 --- !u!1 &7192840590626297812
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,4 +626,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerDirection: {x: 0, y: 0, z: 0}
-  SpikeManager: {fileID: 0}
+  SpikeBorn: {fileID: 0}

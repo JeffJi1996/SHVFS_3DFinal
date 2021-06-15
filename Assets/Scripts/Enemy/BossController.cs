@@ -12,12 +12,17 @@ public class BossController : EnemyController
     
     void SwitchStates()
     {
-
-        if (isChase)
+        if (isCaught)
+            enemyStates = EnemyStates.CATCH;
+        else if (isChase)
             enemyStates = EnemyStates.CHASE;
-
+        
         switch (enemyStates)
         {
+            case EnemyStates.CATCH:
+                transform.forward = new Vector3(playerTrans.position.x - transform.position.x,playerTrans.position.y + 1.5f - transform.position.y, playerTrans.position.z - transform.position.z).normalized;
+                agent.enabled = false;
+                break;
             case EnemyStates.CHASE:
                 agent.destination = playerTrans.position;
                 firstRun = true;
@@ -37,6 +42,10 @@ public class BossController : EnemyController
     public void Die()
     {
         Debug.Log("Boss Die!!!");
-        Destroy(gameObject);
+        attackRange = 0;
+        agent.baseOffset = 1;
+        agent.isStopped = true;
+        PlayerAbilityControl.instance.isBossDead = true;
+        PlayerAbilityControl.instance.BossDeadState();
     }
 }

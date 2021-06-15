@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyBorn : MonoBehaviour,IEndGameObserver
 {
@@ -11,12 +12,15 @@ public class EnemyBorn : MonoBehaviour,IEndGameObserver
     public float bornTime;
     private Collider colli;
     private Vector3 basicPosition;
+    public NavMeshAgent agent;
+    private float speed;
     private void Start()
     {
         colli = GetComponent<Collider>();
         basicPosition = enemy.GetComponent<Transform>().position;
         enemy.SetActive(false);
         portal.SetActive(false);
+        speed = agent.speed;
         GameManager.Instance.AddObserver(this);
     }
     
@@ -43,6 +47,8 @@ public class EnemyBorn : MonoBehaviour,IEndGameObserver
  
     public void EndNotify()
     {
+        enemy.GetComponent<EnemyController>().isCaught = true;
+        //agent.speed = 0;
         if (GameManager.Instance.isBossState && GetComponentInChildren<BossController>() != null)
         {
             StopAllCoroutines();
@@ -53,11 +59,13 @@ public class EnemyBorn : MonoBehaviour,IEndGameObserver
             StopAllCoroutines();
             StartCoroutine(DelayTrans());
         }
+
     }
 
     public void BossBorn()
     {
         StartCoroutine(Born());
+        enemy.GetComponent<EnemyController>().isCaught = false;
     }
     
     IEnumerator Born()
@@ -75,23 +83,31 @@ public class EnemyBorn : MonoBehaviour,IEndGameObserver
     IEnumerator DelayTrans()
     {
         yield return new WaitForSeconds(2f);
+        enemy.GetComponent<NavMeshAgent>().enabled = true;
+        enemy.GetComponent<EnemyController>().isCaught = false;
+        //agent.speed = speed;
         enemy.SetActive(true);
         enemy.SetActive(false);
         portal.SetActive(false);
         if(colli != null)
             colli.enabled = true;
         enemy.transform.position = basicPosition;
+
     }
     
     IEnumerator BossDelayTrans()
     {
         yield return new WaitForSeconds(2f);
+        enemy.GetComponent<NavMeshAgent>().enabled = true;
+        enemy.GetComponent<EnemyController>().isCaught = false;
+        //agent.speed = speed;
         enemy.SetActive(true);
         enemy.SetActive(false);
         portal.SetActive(false);
         if(colli != null)
             colli.enabled = true;
         enemy.transform.position = basicPosition;
+
         StartCoroutine(Born());
     }
     

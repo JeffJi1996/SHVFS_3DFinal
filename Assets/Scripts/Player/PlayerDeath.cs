@@ -33,7 +33,7 @@ public class PlayerDeath : Singleton<PlayerDeath>, IEndGameObserver
 
     private void Update()
     {
-        //当主角结束转头后，播放笑声，同时开始打开黑色死亡界面
+        //褰撲富瑙掔粨鏉熻浆澶村悗锛屾挱鏀剧瑧澹帮紝鍚屾椂寮�濮嬫墦寮�榛戣壊姝讳骸鐣岄潰
         if (LookAway.Instance.endRotate)
         {
             if (doOnce)
@@ -43,7 +43,7 @@ public class PlayerDeath : Singleton<PlayerDeath>, IEndGameObserver
                 doOnce = false;
             }
         }
-        //当黑色死亡界面显示完毕后，开始Reset:人物位置和镜头，powerUp重置
+        //褰撻粦鑹叉浜＄晫闈㈡樉绀哄畬姣曞悗锛屽紑濮婻eset:浜虹墿浣嶇疆鍜岄暅澶达紝powerUp閲嶇疆
         if (DeathPanel.Instance.haveShown)
         {
             if (doOnce1)
@@ -60,6 +60,10 @@ public class PlayerDeath : Singleton<PlayerDeath>, IEndGameObserver
         {
             if (DeathPanel.Instance.CanvasGroup.alpha == 0)
             {
+                if (health <= 0)
+                {
+                    SceneManager.LoadScene(0);
+                }
                 PlayerMovement.Instance.enabled = true;
                 MouseLook.Instance.enabled = true;
                 LookAway.Instance.startRotate = false;
@@ -93,11 +97,7 @@ public class PlayerDeath : Singleton<PlayerDeath>, IEndGameObserver
                 break;
         }
 
-        if (health <= 0)
-        {
-
-            SceneManager.LoadScene(0);
-        }
+ 
 
     }
 
