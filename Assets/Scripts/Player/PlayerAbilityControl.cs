@@ -17,7 +17,7 @@ public class PlayerAbilityControl : MonoBehaviour
     public bool isBossDead;
     public GameObject hand;
     public Material material;
-    private Material tempMaterial;
+    //private Material tempMaterial;
 
     public ParticleSystem transEffect1;
     public ParticleSystem transEffect2;
@@ -34,14 +34,14 @@ public class PlayerAbilityControl : MonoBehaviour
         PowerUpState = false;
         curDuration = 0;
         playOnce = false;
-        tempMaterial = hand.GetComponent<SkinnedMeshRenderer>().material;
+        //tempMaterial = hand.GetComponent<SkinnedMeshRenderer>().material;
         hand.SetActive(false);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        AttackAbility = GetComponentInChildren<PlayerAttack>();
+        //AttackAbility = GetComponentInChildren<PlayerAttack>();
         AttackAbility.enabled = false;
         playerMove = GetComponent<PlayerMovement>();
         navMeshObstacle = GetComponent<NavMeshObstacle>();
@@ -94,7 +94,7 @@ public class PlayerAbilityControl : MonoBehaviour
         playerMove.currentSpeed = playerMove.SuperSpeed;
         MiniMap.instance.ShowEnemyIcon(1);
         hand.SetActive(true);
-        hand.GetComponent<SkinnedMeshRenderer>().material = material;
+        //hand.GetComponent<SkinnedMeshRenderer>().material = material;
 
     }
 
@@ -105,7 +105,7 @@ public class PlayerAbilityControl : MonoBehaviour
         AttackAbility.enabled = false;
         navMeshObstacle.enabled = false;
         playerMove.currentSpeed = playerMove.walkSpeed;
-        hand.GetComponent<SkinnedMeshRenderer>().material = tempMaterial;
+       // hand.GetComponent<SkinnedMeshRenderer>().material = tempMaterial;
         hand.SetActive(false);
         Debug.Log("Recover");
     }
@@ -133,6 +133,6 @@ public class PlayerAbilityControl : MonoBehaviour
         navMeshObstacle.enabled = false;
         MiniMap.instance.ShowEnemyIcon(1);
         hand.SetActive(true);
-        hand.GetComponent<SkinnedMeshRenderer>().material = material;
+        //hand.GetComponent<SkinnedMeshRenderer>().material = material;
     }
 }

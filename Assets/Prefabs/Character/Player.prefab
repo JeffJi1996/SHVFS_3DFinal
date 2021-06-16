@@ -486,10 +486,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3685464d26641894d8d7ab71f000e505, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackAbility: {fileID: 0}
+  AttackAbility: {fileID: 8244353986288090812}
   PowerUpState: 0
   isBossDead: 0
-  hand: {fileID: 0}
+  hand: {fileID: 1223946086236259598}
   material: {fileID: 2100000, guid: 00cc663230ec366448065bb7571f2fa3, type: 2}
   transEffect1: {fileID: 7230300656404796337}
   transEffect2: {fileID: 0}
@@ -934,8 +934,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc8465ec3a331684abf36311ec0b2105, type: 3}
+--- !u!1 &1223946086236259598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9102936502445383955, guid: cc8465ec3a331684abf36311ec0b2105, type: 3}
+  m_PrefabInstance: {fileID: 7973751774788330525}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1997211021213163444 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8439728288208911273, guid: cc8465ec3a331684abf36311ec0b2105, type: 3}
   m_PrefabInstance: {fileID: 7973751774788330525}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8244353986288090812 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2072114029326817953, guid: cc8465ec3a331684abf36311ec0b2105, type: 3}
+  m_PrefabInstance: {fileID: 7973751774788330525}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223946086236259598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f3b157fe2b61fd4d84506a575bc68ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
