@@ -70,11 +70,13 @@ public class SpikeBorn : MonoBehaviour
     void GoUp()
     {
         LeanTween.moveLocalY(this.gameObject, GoUpPosition, GoUpDuration).setEaseInQuint();
+        SoundManager.instance.PlaySound("sfx_spiketrap");
     }
 
     void GoDown()
     {
         LeanTween.moveLocalY(gameObject, initialPosition.y, GoDownDuration).setEaseInQuint().setOnComplete(ChangeState);
+        SoundManager.instance.PlaySound("sfx_spiketrap");
     }
 
     IEnumerator Puncture()
