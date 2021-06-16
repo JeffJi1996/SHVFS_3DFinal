@@ -18,7 +18,8 @@ public class PlayerDeath : Singleton<PlayerDeath>, IEndGameObserver
         Spike,
     }
 
-    public Vector3 InitPosition;
+    private Vector3 InitPosition;
+    public Vector3 InitRotation;
 
     private void Start()
     {
@@ -104,7 +105,7 @@ public class PlayerDeath : Singleton<PlayerDeath>, IEndGameObserver
     private void Reset()
     {
         transform.position = InitPosition;
-        transform.eulerAngles = new Vector3(0, 0, 0);
+        transform.eulerAngles = InitRotation;
         PowerUpManager.Instance.Reset();
         isDeath = false;
         PlayerAbilityControl.instance.RecoverToHuman();

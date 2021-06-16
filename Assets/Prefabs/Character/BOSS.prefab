@@ -492,8 +492,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be0fdc3a3616c494bb0006a0aa71140d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelWidth: 88
-  levelLength: 76
+  levelWidth: 48.38572
+  levelLength: 48.38572
   floor: 1
   attackRange: 4
   escapePosition: {x: 0, y: 0, z: 0}
