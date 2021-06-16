@@ -56,6 +56,7 @@ public class ChongLuan : MonoBehaviour
                         {
                             EggManager.Instance.Boss.GetComponentInChildren<BossController>().Die();
                         }
+                        PlayerAbilityControl.instance.AttackAbility.isAtEgg = false;
                         Destroy(gameObject);
                     }
                 }
