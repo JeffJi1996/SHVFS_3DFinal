@@ -17,7 +17,6 @@ public class EggTrigger : MonoBehaviour
         if (other.GetComponent<PlayerMovement>()!= null)
         {
             GetComponentInParent<ChongLuan>().canAttack = false;
-            GetComponentInParent<ChongLuan>().curHealth = 0;
         }
     }
 }

@@ -107,6 +107,7 @@ public class PlayerAbilityControl : MonoBehaviour
         playerMove.currentSpeed = playerMove.walkSpeed;
         hand.GetComponent<SkinnedMeshRenderer>().material = tempMaterial;
         hand.SetActive(false);
+        Debug.Log("Recover");
     }
 
     void PowerUp()
@@ -127,6 +128,7 @@ public class PlayerAbilityControl : MonoBehaviour
         transEffect1.Play();
         transEffect2.loop = true;
         AttackAbility.enabled = true;
+        AttackAbility.isAtEgg = false;
         navMeshObstacle.enabled = true;
         playerMove.currentSpeed = playerMove.SuperSpeed;
         navMeshObstacle.enabled = false;
