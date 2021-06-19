@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && !isAtEgg)
         {
             anim.SetTrigger("Attack");
-            SoundManager.instance.PlaySound("sfx_playerPunchwolf");
+            SoundManager.instance.PlaySound("sfx_whoosh");
         }
     }
     void OnTriggerEnter(Collider col)

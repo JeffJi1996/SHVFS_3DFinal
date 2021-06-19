@@ -10,6 +10,7 @@ public class SpikeDamage : MonoBehaviour
         {
             Debug.Log(PlayerDeath.Instance.health);
             PlayerDeath.Instance.killBy = PlayerDeath.KillBy.Spike;
+            SoundManager.instance.PlaySound("sfx_playerDie");
             GameManager.Instance.NotifyObservers();
         }
     }

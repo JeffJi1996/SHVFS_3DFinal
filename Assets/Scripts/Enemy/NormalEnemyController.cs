@@ -32,6 +32,7 @@ public class NormalEnemyController : EnemyController
                 //agent.destination = transform.position;
                 //agent.isStopped = true;
                 agent.enabled = false;
+                Debug.Log(gameObject.name);
                 break;
             case EnemyStates.CHASE:
                 agent.destination = playerTrans.position;

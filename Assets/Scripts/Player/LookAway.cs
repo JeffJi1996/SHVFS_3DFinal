@@ -23,7 +23,6 @@ public class LookAway : Singleton<LookAway>
         {
             Vector3 lookDirection = target.transform.position - transform.position;
             Quaternion lookOnLook = Quaternion.LookRotation(lookDirection);
-
             transform.rotation = Quaternion.Slerp(transform.rotation, lookOnLook, lerpFloat);
             lerpFloat = rotateSpeed * Time.deltaTime;
 

@@ -39,7 +39,6 @@ public class PlayerDeath : Singleton<PlayerDeath>, IEndGameObserver
         {
             if (doOnce)
             {
-                SoundManager.instance.PlaySound("sfx_collect");
                 DeathPanel.Instance.ShowDeath();
                 doOnce = false;
             }
@@ -84,7 +83,7 @@ public class PlayerDeath : Singleton<PlayerDeath>, IEndGameObserver
         health--;
         PlayerMovement.Instance.enabled = false;
         MouseLook.Instance.enabled = false;
-
+        SoundManager.instance.PlaySound("sfx_playerDie");
         switch (killBy)
         {
             case KillBy.NormalEnemy:

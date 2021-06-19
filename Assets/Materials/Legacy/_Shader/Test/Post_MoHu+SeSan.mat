@@ -33,7 +33,7 @@ Material:
     - _Numberofsamples: 0
     - _U: 0.5
     - _V: 0.5
-    - _blur: 0.2
+    - _blur: 0.4
     - _mask_Scale: 1
     - _mask_qd: 1
     m_Colors: []

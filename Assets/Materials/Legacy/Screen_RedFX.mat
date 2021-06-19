@@ -34,9 +34,9 @@ Material:
     m_Ints: []
     m_Floats:
     - _Alpha: 1
-    - _Scale: 1
+    - _Scale: 2
     m_Colors:
-    - _Color0: {r: 0.3584906, g: 0.013401519, b: 0, a: 1}
+    - _Color0: {r: 0.6226415, g: 0.064411186, b: 0, a: 1}
     - _MaskTillingOffect: {r: 1, g: 1, b: 0, a: 0}
     - _Panner: {r: 1, g: 1, b: 1, a: 0}
     - _RGBA_Mask: {r: 1, g: 0, b: 0, a: 0}

@@ -35,6 +35,8 @@ public class EnemyBorn : MonoBehaviour,IEndGameObserver
         if (other.GetComponent<PlayerMovement>() != null)
         {
             colli.enabled = false;
+            agent.enabled = true;
+            enemy.GetComponent<EnemyController>().isCaught = false;
             StartCoroutine(Born());
         }
     }
@@ -87,6 +89,7 @@ public class EnemyBorn : MonoBehaviour,IEndGameObserver
     IEnumerator DelayTrans()
     {
         yield return new WaitForSeconds(2f);
+        Debug.Log(gameObject.name);
         enemy.GetComponent<NavMeshAgent>().enabled = true;
         enemy.GetComponent<EnemyController>().isCaught = false;
         //agent.speed = speed;
